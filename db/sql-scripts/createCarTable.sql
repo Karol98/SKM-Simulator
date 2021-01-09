@@ -1,4 +1,4 @@
-        CREATE TABLE trains (
+/*        CREATE TABLE trains (
         id                          INT AUTO_INCREMENT NOT NULL,
         currentStation              INT UNSIGNED,
         goingToGdansk               BOOLEAN,

@@ -1,0 +1,92 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2020_09_01-initial-tables
+      author: Karol.Skwierawski
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: trains, compartments, persons
+      changes:
+        - createTable:
+            tableName: trains
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: train_id_pkey
+              - column:
+                  name: currentStation
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: goingToGdansk
+                  type: BIT(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currentPauseTime
+                  type: INT
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: compartments
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: compartment_id_pkey
+              - column:
+                  name: capacity
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: train_id
+                  type: INT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: compartment_train_id_fkey
+                    reference: trains(id)
+        - createTable:
+            tableName: persons
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: person_id_pkey
+              - column:
+                  name: firstName
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastName
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: destination
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: compartment_id
+                  type: INT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: person_compartment_id_fkey
+                    references: compartments(id)
