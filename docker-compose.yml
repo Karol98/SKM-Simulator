@@ -11,7 +11,7 @@ services:
       - "22222:22222"
   cardb:
     build: ./db
-      restart: on-failure:2
+    restart: on-failure:2
     ports:
       - "3306:3306"
     environment:

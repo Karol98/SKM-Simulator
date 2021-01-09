@@ -2,15 +2,15 @@ package pl.edu.pjwstk.jazapi.service;
 
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.jazapi.model.Train;
-import pl.edu.pjwstk.jazapi.repository.TraintRepository;
+import pl.edu.pjwstk.jazapi.repository.TrainRepository;
 
 import java.util.List;
 
 @Service
 public class TrainService extends CrudService<Train> {
 
-    public TrainService(TraintRepository traintRepository) {
-        super(traintRepository);
+    public TrainService(TrainRepository trainRepository) {
+        super(trainRepository);
     }
 
     @Override

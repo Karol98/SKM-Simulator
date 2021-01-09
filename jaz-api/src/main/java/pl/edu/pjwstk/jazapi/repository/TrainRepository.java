@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.edu.pjwstk.jazapi.model.Train;
 
 @Repository
-public interface TraintRepository extends JpaRepository<Train, Long> {
+public interface TrainRepository extends JpaRepository<Train, Long> {
 }
